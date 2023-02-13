@@ -12,7 +12,17 @@ NAME		=	nanotekspice
 
 MAIN		=	src/Main.cpp
 
-SRC			=	src/ReadStandardInput.cpp
+SRC			=	src/AComponent.cpp	\
+				src/APin.cpp	\
+				src/AndComponent.cpp	\
+				src/OrComponent.cpp	\
+				src/XorComponent.cpp	\
+				src/NotComponent.cpp	\
+				src/FalseComponent.cpp	\
+				src/TrueComponent.cpp	\
+				src/Tristate.cpp	\
+				src/Circuit.cpp	\
+				src/ReadStandardInput.cpp	\
 
 OBJ			=	$(SRC:%.cpp=%.o) $(MAIN:%.cpp=%.o)
 
