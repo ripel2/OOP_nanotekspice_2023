@@ -13,7 +13,7 @@
 namespace nts {
     class Circuit : IComponent {
         public:
-            Circuit();    
+            Circuit();
             ~Circuit();
 
             void addComponent(const std::string &name, std::unique_ptr<IComponent> component);
@@ -26,4 +26,5 @@ namespace nts {
             std::size_t _tick;
             std::map<std::string, std::shared_ptr<IComponent>> _components;
     };
+    void ParseCircuit(nts::Circuit &circuit, char *filename);
 }
