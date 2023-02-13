@@ -12,7 +12,7 @@ NAME		=	nanotekspice
 
 MAIN		=	src/Main.cpp
 
-SRC			=	
+SRC			=	src/ReadStandardInput.cpp
 
 OBJ			=	$(SRC:%.cpp=%.o) $(MAIN:%.cpp=%.o)
 
