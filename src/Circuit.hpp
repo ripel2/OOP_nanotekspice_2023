@@ -26,5 +26,4 @@ namespace nts {
             std::size_t _tick;
             std::map<std::string, std::shared_ptr<IComponent>> _components;
     };
-    void ParseCircuit(nts::Circuit &circuit, char *filename);
 }
