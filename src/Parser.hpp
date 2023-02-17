@@ -15,11 +15,12 @@
 #include <regex>
 
 #include "Circuit.hpp"
+#include "ComponentFactory.hpp"
 
 namespace nts {    
     class Parser {
         public:
-            Parser(Circuit &circuit, const std::string &filename);
+            Parser(Circuit &circuit, ComponentFactory &factory, const std::string &filename);
             ~Parser();
 
             void parseCircuit();
@@ -41,10 +42,6 @@ namespace nts {
                 public:
                     SyntaxError(const std::string &message) : ParserException(message) {}
             };
-            class UnknownComponent : public ParserException {
-                public:
-                    UnknownComponent(const std::string &message) : ParserException(message) {}
-            };
             class NoChipset : public ParserException {
                 public:
                     NoChipset(const std::string &message) : ParserException(message) {}
@@ -57,6 +54,7 @@ namespace nts {
         protected:
         private:
             Circuit &_circuit;
+            ComponentFactory &_factory;
             std::string _filename;
             int _status = ParserStatus::Unknown;
             int _lineNumber = 0;

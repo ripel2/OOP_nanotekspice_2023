@@ -7,8 +7,8 @@
 
 #include "Parser.hpp"
 
-nts::Parser::Parser(Circuit &circuit, const std::string &filename)
-    : _circuit(circuit), _filename(filename)
+nts::Parser::Parser(Circuit &circuit, ComponentFactory &factory, const std::string &filename)
+    : _circuit(circuit), _factory(factory), _filename(filename)
 {
 }
 
@@ -54,7 +54,10 @@ void nts::Parser::parseChipset(const std::string &line)
     if (std::regex_match(line, chipsetMatch, _chipsetRegex)) {
         std::string chipset = chipsetMatch[1];
         std::string name = chipsetMatch[2];
-        std::cout << "Chipset " << chipset << " named " << name << std::endl;
+        std::unique_ptr<nts::IComponent> component = _factory.createComponent(chipset);
+        if (component == nullptr) // TODO: remove this temporary solution. No element of the factory should be null
+            throw ParserException("Debug: chipset not implemented \"" + chipset + "\" at line " + std::to_string(_lineNumber));
+        _circuit.addComponent(name, std::move(component));
     } else {
         throw SyntaxError("Syntax error at line " + std::to_string(_lineNumber));
     }
@@ -69,8 +72,9 @@ void nts::Parser::parseLink(const std::string &line)
         std::size_t pin = std::stoi(linkMatch[2]);
         std::string otherLink = linkMatch[3];
         std::size_t otherPin = std::stoi(linkMatch[4]);
-        std::cout << "Link component " << link << " pin " << pin << " to component "
-        << otherLink << " pin " << otherPin << std::endl;
+        std::shared_ptr <nts::IComponent> component = _circuit.getComponent(link);
+        std::shared_ptr <nts::IComponent> otherComponent = _circuit.getComponent(otherLink);
+        component->setLink(pin, *otherComponent, otherPin);
     } else {
         throw SyntaxError("Syntax error at line " + std::to_string(_lineNumber));
     }
