@@ -14,6 +14,11 @@ int main(int ac, char **av)
         return (84);
     nts::Circuit circuit;
     nts::Parser parser = nts::Parser(circuit, av[1]);
-    parser.parseCircuit();
+    try {
+        parser.parseCircuit();
+    } catch (nts::Parser::ParserException &e) {
+        std::cerr << av[0] << ": " << e.what() << std::endl;
+        return (84);
+    }
     return (0);
 }
