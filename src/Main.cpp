@@ -6,17 +6,24 @@
 */
 
 #include "Circuit.hpp"
+#include "ComponentFactory.hpp"
 #include "Parser.hpp"
 
 int main(int ac, char **av)
 {
-    if (ac != 2)
+    if (ac != 2) {
+        std::cerr << "Usage: " << av[0] << " file.nts" << std::endl;
         return (84);
+    }
     nts::Circuit circuit;
-    nts::Parser parser = nts::Parser(circuit, av[1]);
+    nts::ComponentFactory factory;
+    nts::Parser parser = nts::Parser(circuit, factory, av[1]);
     try {
         parser.parseCircuit();
     } catch (nts::Parser::ParserException &e) {
+        std::cerr << av[0] << ": " << e.what() << std::endl;
+        return (84);
+    } catch (nts::ComponentFactory::ComponentFactoryException &e) {
         std::cerr << av[0] << ": " << e.what() << std::endl;
         return (84);
     }
