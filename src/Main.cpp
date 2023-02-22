@@ -8,6 +8,7 @@
 #include "Circuit.hpp"
 #include "ComponentFactory.hpp"
 #include "Parser.hpp"
+#include "CommandLine.hpp"
 
 int main(int ac, char **av)
 {
@@ -24,6 +25,13 @@ int main(int ac, char **av)
         std::cerr << av[0] << ": " << e.what() << std::endl;
         return (84);
     } catch (nts::ComponentFactory::ComponentFactoryException &e) {
+        std::cerr << av[0] << ": " << e.what() << std::endl;
+        return (84);
+    }
+    nts::CommandLine commandLine = nts::CommandLine(circuit);
+    try {
+        commandLine.loop();
+    } catch (nts::CommandLine::CommandLineException &e) {
         std::cerr << av[0] << ": " << e.what() << std::endl;
         return (84);
     }

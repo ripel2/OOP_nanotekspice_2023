@@ -24,7 +24,10 @@ SRC			=	src/AComponent.cpp	\
 				src/Circuit.cpp	\
 				src/ReadStandardInput.cpp	\
 				src/Parser.cpp	\
-				src/ComponentFactory.cpp
+				src/ComponentFactory.cpp \
+				src/CommandLine.cpp	\
+				src/OutputComponent.cpp	\
+				src/InputComponent.cpp
 
 OBJ			=	$(SRC:%.cpp=%.o) $(MAIN:%.cpp=%.o)
 

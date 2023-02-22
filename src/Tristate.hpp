@@ -7,6 +7,8 @@
 
 #pragma once
 
+#include <iostream>
+
 namespace nts {
     enum Tristate {
         UNDEFINED = (-true),
@@ -18,4 +20,6 @@ namespace nts {
     Tristate operator|(Tristate a, Tristate b);
     Tristate operator!(Tristate a);
     Tristate operator^(Tristate a, Tristate b);
+
+    std::ostream &operator<<(std::ostream &s, Tristate a);
 }

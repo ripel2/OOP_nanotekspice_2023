@@ -51,3 +51,14 @@ nts::Tristate nts::operator^(nts::Tristate a, nts::Tristate b)
         return nts::Tristate::FALSE;
     return nts::Tristate::TRUE;
 }
+
+std::ostream &nts::operator<<(std::ostream &s, nts::Tristate a)
+{
+    if (a == nts::Tristate::UNDEFINED)
+        s << "U";
+    else if (a == nts::Tristate::TRUE)
+        s << "1";
+    else
+        s << "0";
+    return s;
+}

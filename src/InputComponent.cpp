@@ -52,11 +52,11 @@ void nts::InputComponent::dump() const
     std::cout << "State: " << _outputs.at(1) << std::endl;
 }
 
-nts::InputComponent &nts::InputComponent::operator=(const nts::InputComponent &other)
-{
-    if(this == &other)
-        return *this;
-    this->_outputs = other._outputs;
-    this->_name = other._name;
-    return *this;
-}
+// nts::InputComponent &nts::InputComponent::operator=(const nts::InputComponent &other)
+// {
+//     if(this == &other)
+//         return *this;
+//     this->_outputs = other._outputs;
+//     this->_name = other._name;
+//     return *this;
+// }

@@ -10,6 +10,9 @@
 #include "TrueComponent.hpp"
 #include "FalseComponent.hpp"
 
+#include "InputComponent.hpp"
+#include "OutputComponent.hpp"
+
 #include "AndComponent.hpp"
 #include "OrComponent.hpp"
 #include "XorComponent.hpp"
@@ -49,11 +52,11 @@ std::unique_ptr<nts::IComponent> nts::ComponentFactory::createComponent(const st
 }
 
 std::unique_ptr<nts::IComponent> nts::ComponentFactory::createInput() {
-    return nullptr;
+    return std::make_unique<nts::InputComponent>();
 }
 
 std::unique_ptr<nts::IComponent> nts::ComponentFactory::createOutput() {
-    return nullptr;
+    return std::make_unique<nts::OutputComponent>();
 }
 
 std::unique_ptr<nts::IComponent> nts::ComponentFactory::createClock() {

@@ -21,6 +21,9 @@ namespace nts {
             nts::Tristate compute(std::size_t pin) override;
             void simulate(std::size_t tick) override;
             void setLink(std::size_t pin, nts::IComponent &other, std::size_t otherPin) override;
+            void loop();
+            std::size_t getTick() const;
+            void display() const;
         protected:
         private:
             std::size_t _tick;
