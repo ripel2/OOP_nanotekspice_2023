@@ -29,6 +29,7 @@ nts::Tristate nts::OutputComponent::compute(std::size_t pin)
 void nts::OutputComponent::simulate(std::size_t tick)
 {
     (void)tick;
+    _outputs[1] = compute(_inputs.at(0));
 }
 
 void nts::OutputComponent::setLink(std::size_t pin, nts::IComponent &other, std::size_t otherPin)
@@ -45,17 +46,6 @@ void nts::OutputComponent::setLink(std::size_t pin, nts::IComponent &other, std:
 
 void nts::OutputComponent::dump() const
 {
-    std::cout << "OutputComponent" << std::endl;
+        std::cout << "Output(s):" << _name << std::endl;
+    std::cout << '\t' << _name << ": " << _outputs.at(1) << std::endl;
 }
-
-// nts::OutputComponent &nts::OutputComponent::operator=(const nts::OutputComponent &other)
-// {
-//     if(this == &other)
-//         return *this;
-//     this->_outputs = other._outputs;
-//     this->_name = other._name;
-//     return *this;
-// }
-
-
-
