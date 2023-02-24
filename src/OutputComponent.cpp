@@ -24,7 +24,9 @@ nts::OutputComponent::~OutputComponent()
 
 nts::Tristate nts::OutputComponent::compute(std::size_t pin)
 {
-    (void)pin;
+    if (pin != 1)
+        return nts::UNDEFINED;
+    _outputs[1] = getLink(1)->compute();
     return _outputs[1];
 }
 
