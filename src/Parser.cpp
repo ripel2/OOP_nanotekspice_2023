@@ -109,4 +109,6 @@ void nts::Parser::parseCircuit()
     } else {
         throw FileException(_filename + ": " + strerror(errno));
     }
+    if (_circuit.isEmpty())
+        throw EmptyCircuit("No chipset found in file " + _filename);
 }

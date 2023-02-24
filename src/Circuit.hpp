@@ -25,6 +25,7 @@ namespace nts {
             std::size_t getTick() const;
             void display() const;
             void setInput(const std::string &name, nts::Tristate state);
+            bool isEmpty() const;
         protected:
         private:
             std::size_t _tick;

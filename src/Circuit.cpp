@@ -98,3 +98,8 @@ void nts::Circuit::setInput(const std::string &name, nts::Tristate state)
         dynamic_cast<nts::InputComponent *>(componentPtr.get())->setState(state);
     }
 }
+
+bool nts::Circuit::isEmpty() const
+{
+    return _components.empty();
+}
