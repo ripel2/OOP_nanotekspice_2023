@@ -83,6 +83,10 @@ void nts::Parser::parseLink(const std::string &line)
         std::size_t otherPin = std::stoi(linkMatch[4]);
         std::shared_ptr <nts::IComponent> component = _circuit.getComponent(link);
         std::shared_ptr <nts::IComponent> otherComponent = _circuit.getComponent(otherLink);
+        if (component == nullptr)
+            throw NoChipset("No chipset \"" + link + "\" at line " + std::to_string(_lineNumber));
+        if (otherComponent == nullptr)
+            throw NoChipset("No chipset \"" + otherLink + "\" at line " + std::to_string(_lineNumber));
         component->setLink(pin, *otherComponent, otherPin);
         otherComponent->setLink(otherPin, *component, pin);
     } else {

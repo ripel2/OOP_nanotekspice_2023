@@ -46,6 +46,10 @@ namespace nts {
                 public:
                     NoChipset(const std::string &message) : ParserException(message) {}
             };
+            class EmptyCircuit : public ParserException {
+                public:
+                    EmptyCircuit(const std::string &message) : ParserException(message) {}
+            };
             enum ParserStatus {
                 Unknown = 0,
                 Chipset,
