@@ -62,6 +62,7 @@ namespace nts {
             const std::regex _chipsetRegex = std::regex("^([a-zA-Z0-9_]+)\\s*([a-zA-Z0-9_]+)$");
             const std::regex _linkRegex = std::regex("^([a-zA-Z0-9_]+)\\s*:\\s*([0-9]+)\\s*([a-zA-Z0-9_]+)\\s*:\\s*([0-9]+)$");
 
+            void stripComments(std::string &line);
             void stripLine(std::string &line, const std::string &seps);
             void parseLine(const std::string &line);
             void parseChipset(const std::string &line);

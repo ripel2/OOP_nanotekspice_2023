@@ -16,6 +16,14 @@ nts::Parser::~Parser()
 {
 }
 
+void nts::Parser::stripComments(std::string &line)
+{
+    size_t pos = line.find('#');
+
+    if (pos != std::string::npos)
+        line.erase(pos);
+}
+
 void nts::Parser::stripLine(std::string &line, const std::string &seps)
 {
     line.erase(line.find_last_not_of(seps) + 1);
@@ -27,6 +35,7 @@ void nts::Parser::parseLine(const std::string &line)
     std::string seps = " \t\n";
     std::string copy = line;
 
+    stripComments(copy);
     stripLine(copy, seps);
     if (copy.empty() || copy[0] == '#')
         return;
