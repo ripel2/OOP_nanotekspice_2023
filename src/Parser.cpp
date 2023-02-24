@@ -75,6 +75,7 @@ void nts::Parser::parseLink(const std::string &line)
         std::shared_ptr <nts::IComponent> component = _circuit.getComponent(link);
         std::shared_ptr <nts::IComponent> otherComponent = _circuit.getComponent(otherLink);
         component->setLink(pin, *otherComponent, otherPin);
+        otherComponent->setLink(otherPin, *component, pin);
     } else {
         throw SyntaxError("Syntax error at line " + std::to_string(_lineNumber));
     }

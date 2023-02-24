@@ -7,7 +7,8 @@
 
 #include "ClockComponent.hpp"
 
-nts::ClockComponent::ClockComponent() : InputComponent()
+nts::ClockComponent::ClockComponent()
+    : InputComponent()
 {
 }
 
@@ -15,10 +16,15 @@ nts::ClockComponent::~ClockComponent()
 {
 }
 
-void nts::ClockComponent::setClock()
+nts::Tristate nts::ClockComponent::compute(std::size_t pin)
 {
-    if (getState() == nts::TRUE)
-        _outputs[1] = nts::FALSE;
-    else
-        _outputs[1] = nts::TRUE;
+    if (pin != 1)
+        return nts::UNDEFINED;
+    return InputComponent::compute(pin);
+}
+
+void nts::ClockComponent::simulate(std::size_t tick)
+{
+    InputComponent::simulate(tick);
+    InputComponent::setState(!InputComponent::compute(1));
 }

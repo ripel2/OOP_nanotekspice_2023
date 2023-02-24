@@ -9,7 +9,7 @@
 #include "IComponent.hpp"
 
 nts::APin::APin(std::size_t pin, nts::IComponent &component)
-    : _state(nts::UNDEFINED), _pin(pin), _component(component)
+    : _pin(pin), _component(component), _state(nts::UNDEFINED)
 {
 
 }

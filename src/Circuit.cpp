@@ -9,9 +9,10 @@
 
 #include "InputComponent.hpp"
 #include "OutputComponent.hpp"
+#include "ClockComponent.hpp"
 
 nts::Circuit::Circuit()
-    : _components(), _tick(0)
+    : _tick(0), _components() 
 {
 }
 
@@ -33,12 +34,15 @@ std::shared_ptr<nts::IComponent> nts::Circuit::getComponent(const std::string &n
 
 void nts::Circuit::setLink(std::size_t pin, nts::IComponent &other, std::size_t otherPin)
 {
-
+    (void)pin;
+    (void)other;
+    (void)otherPin;
 }
 
 nts::Tristate nts::Circuit::compute(std::size_t pin)
 {
-
+    (void)pin;
+    return nts::UNDEFINED;
 }
 
 void nts::Circuit::display() const
@@ -80,5 +84,17 @@ void nts::Circuit::loop()
     while (true) {
         simulate(_tick);
         _tick++;
+    }
+}
+
+void nts::Circuit::setInput(const std::string &name, nts::Tristate state)
+{
+    std::shared_ptr<nts::IComponent> componentPtr = getComponent(name);
+
+    if (componentPtr == nullptr)
+        return;
+    // TODO: error handling on components that dont exist ? maybe in command line ?
+    if (dynamic_cast<nts::InputComponent *>(componentPtr.get()) != nullptr) {
+        dynamic_cast<nts::InputComponent *>(componentPtr.get())->setState(state);
     }
 }

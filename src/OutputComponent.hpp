@@ -11,14 +11,13 @@
 
 
 namespace nts {
-    class OutputComponent : public InputComponent {
+    class OutputComponent : public AComponent {
         public:
             OutputComponent();
             OutputComponent(const std::string &name);
             ~OutputComponent();
             Tristate compute(std::size_t pin);
             void simulate(std::size_t tick);
-            void setLink(std::size_t pin, nts::IComponent &other, std::size_t otherPin);
             std::map<std::size_t, nts::Tristate> getOutputs() const;
             std::map<std::size_t, nts::Tristate> getInputs() const;
             void dump() const;

@@ -34,5 +34,6 @@ namespace nts {
             bool isSimulate(const std::string &line);
             bool isLoop(const std::string &line);
             void processLine(const std::string &line);
+            void processPossibleInput(const std::string &line);
     };
 }

@@ -17,18 +17,15 @@ namespace nts {
     class InputComponent : public AComponent {
         public:
             InputComponent();
-            InputComponent(const std::string &name);
             ~InputComponent() override = default;
             Tristate compute(std::size_t pin) override;
             void simulate(std::size_t tick);
             void setState(nts::Tristate state);
-            void setName(std::string name);
-            void setLink(std::size_t pin, nts::IComponent &other, std::size_t otherPin) override;
-            nts::Tristate getState() const;
             void dump() const;
         protected:
         private:
-            std::string _name;
-            std::map<std::size_t, nts::Tristate> _outputs;
+            nts::Tristate _state = nts::UNDEFINED;
+            nts::Tristate _incState = nts::UNDEFINED;
+            bool _needsUpdate = false;
     };
 }

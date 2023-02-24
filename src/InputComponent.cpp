@@ -11,56 +11,30 @@ nts::InputComponent::InputComponent()
 {
 }
 
-nts::InputComponent::InputComponent(const std::string &name) : nts::AComponent(),  _name(name), _outputs()
-{
-    _outputs[1] = nts::UNDEFINED;
-}
-
-
 nts::Tristate nts::InputComponent::compute(std::size_t pin)
 {
-    (void)pin;
-    return _outputs[1];
+    if (pin != 1)
+        return nts::UNDEFINED;
+    return _state;
 }
 
 void nts::InputComponent::simulate(std::size_t tick)
 {
-    AComponent::simulate(tick);
-    compute(1);
-}
-
-void nts::InputComponent::setLink(std::size_t pin, nts::IComponent &other, std::size_t otherPin)
-{
-    (void)other;
-    (void)otherPin;
-
-    if (pin == 1)
-        _outputs[1] = nts::TRUE;
-    else if (pin == 2)
-        _outputs[1] = nts::FALSE;
-    else
-        _outputs[1] = nts::UNDEFINED;
-}
-
-nts::Tristate nts::InputComponent::getState() const
-{
-    return _outputs.at(1);
-}
-
-void nts::InputComponent::dump() const
-{
-    std::cout << "Input(s):" << _name << std::endl;
-    std::cout << '\t' << _name << ": " << _outputs.at(1) << std::endl;
+    (void)tick;
+    if (_needsUpdate) {
+        _state = _incState;
+        _needsUpdate = false;
+    }
 }
 
 void nts::InputComponent::setState(nts::Tristate state)
 {
-    _outputs[1] = state;
+    _incState = state;
+    _needsUpdate = true;
 }
 
-void nts::InputComponent::setName(std::string name)
+void nts::InputComponent::dump() const
 {
-    _name = name;
+    std::cout << "Input(s):" << std::endl;
+    std::cout << '\t' << "input: " << _state << std::endl;
 }
-
-

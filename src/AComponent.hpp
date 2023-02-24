@@ -20,7 +20,7 @@ namespace nts {
             AComponent() = default;
             virtual ~AComponent() = default;
             virtual nts::Tristate compute(std::size_t pin) = 0;
-            void simulate(std::size_t tick) override {};
+            void simulate(std::size_t tick) override { (void)tick; };
             void setLink(std::size_t pin, nts::IComponent &other, std::size_t otherPin) override;
             std::shared_ptr<IPin> getLink(std::size_t pin) const;
         protected:

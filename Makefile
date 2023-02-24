@@ -22,12 +22,12 @@ SRC			=	src/AComponent.cpp	\
 				src/TrueComponent.cpp	\
 				src/Tristate.cpp	\
 				src/Circuit.cpp	\
-				src/ReadStandardInput.cpp	\
 				src/Parser.cpp	\
 				src/ComponentFactory.cpp \
 				src/CommandLine.cpp	\
 				src/OutputComponent.cpp	\
-				src/InputComponent.cpp
+				src/InputComponent.cpp	\
+				src/ClockComponent.cpp
 
 OBJ			=	$(SRC:%.cpp=%.o) $(MAIN:%.cpp=%.o)
 

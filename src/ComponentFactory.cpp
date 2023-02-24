@@ -12,6 +12,7 @@
 
 #include "InputComponent.hpp"
 #include "OutputComponent.hpp"
+#include "ClockComponent.hpp"
 
 #include "AndComponent.hpp"
 #include "OrComponent.hpp"
@@ -60,7 +61,7 @@ std::unique_ptr<nts::IComponent> nts::ComponentFactory::createOutput() {
 }
 
 std::unique_ptr<nts::IComponent> nts::ComponentFactory::createClock() {
-    return nullptr;
+    return std::make_unique<nts::ClockComponent>();
 }
 
 std::unique_ptr<nts::IComponent> nts::ComponentFactory::createTrue() {

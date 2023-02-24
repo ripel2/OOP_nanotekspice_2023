@@ -9,9 +9,11 @@
 
 nts::OutputComponent::OutputComponent()
 {
+    _outputs[1] = nts::UNDEFINED;
 }
 
-nts::OutputComponent::OutputComponent(const std::string &name) : nts::InputComponent(),  _name(name), _outputs()
+nts::OutputComponent::OutputComponent(const std::string &name)
+    : _name(name), _outputs()
 {
     _outputs[1] = nts::UNDEFINED;
 }
@@ -29,19 +31,7 @@ nts::Tristate nts::OutputComponent::compute(std::size_t pin)
 void nts::OutputComponent::simulate(std::size_t tick)
 {
     (void)tick;
-    _outputs[1] = compute(_inputs.at(0));
-}
-
-void nts::OutputComponent::setLink(std::size_t pin, nts::IComponent &other, std::size_t otherPin)
-{
-    (void)other;
-    (void)otherPin;
-    if (pin == 1)
-        _outputs[1] = nts::TRUE;
-    else if (pin == 2)
-        _outputs[1] = nts::FALSE;
-    else
-        _outputs[1] = nts::UNDEFINED;
+    _outputs[1] = getLink(1)->compute();
 }
 
 void nts::OutputComponent::dump() const
