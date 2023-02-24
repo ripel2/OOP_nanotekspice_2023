@@ -49,17 +49,15 @@ void nts::Circuit::display() const
     std::cout << "input(s):" << std::endl;
     for (auto &component : _components) {
         componentPtr = component.second;
-
         if (dynamic_cast<nts::InputComponent *>(componentPtr.get()) != nullptr) {
-            std::cout << component.first << "=" << componentPtr->compute(1) << std::endl;
+            std::cout << "  " << component.first << ": " << componentPtr->compute(1) << std::endl;
         }
     }
     std::cout << "output(s):" << std::endl;
     for (auto &component : _components) {
         componentPtr = component.second;
-
         if (dynamic_cast<nts::OutputComponent *>(componentPtr.get()) != nullptr) {
-            std::cout << component.first << "=" << componentPtr->compute(1) << std::endl;
+            std::cout << "  " << component.first << ": " << componentPtr->compute(1) << std::endl;
         }
     }
 }
