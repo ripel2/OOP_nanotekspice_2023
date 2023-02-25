@@ -30,6 +30,7 @@ SRC			=	src/AComponent.cpp	\
 				src/ClockComponent.cpp	\
 				src/C4069.cpp   \
 				src/C4001.cpp   \
+				src/C4011.cpp   \
 
 OBJ			=	$(SRC:%.cpp=%.o) $(MAIN:%.cpp=%.o)
 
