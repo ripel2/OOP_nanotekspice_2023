@@ -102,8 +102,10 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Starts tests
-        run: python3 tests/functionnal/script.py
+      - name: Compile executable and start tests
+        run: |
+          make
+          python3 tests/functionnal/script.py
         timeout-minutes: 2
 
   push_to_mirror:
