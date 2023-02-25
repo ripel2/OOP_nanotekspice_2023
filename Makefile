@@ -27,7 +27,8 @@ SRC			=	src/AComponent.cpp	\
 				src/CommandLine.cpp	\
 				src/OutputComponent.cpp	\
 				src/InputComponent.cpp	\
-				src/ClockComponent.cpp
+				src/ClockComponent.cpp	\
+				src/C4069.cpp
 
 OBJ			=	$(SRC:%.cpp=%.o) $(MAIN:%.cpp=%.o)
 

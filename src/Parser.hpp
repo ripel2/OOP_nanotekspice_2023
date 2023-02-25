@@ -17,7 +17,7 @@
 #include "Circuit.hpp"
 #include "ComponentFactory.hpp"
 
-namespace nts {    
+namespace nts {
     class Parser {
         public:
             Parser(Circuit &circuit, ComponentFactory &factory, const std::string &filename);

@@ -18,6 +18,7 @@
 #include "OrComponent.hpp"
 #include "XorComponent.hpp"
 #include "NotComponent.hpp"
+#include "C4069.hpp"
 
 #include <vector>
 
@@ -101,7 +102,7 @@ std::unique_ptr<nts::IComponent> nts::ComponentFactory::create4030Gate() {
 }
 
 std::unique_ptr<nts::IComponent> nts::ComponentFactory::create4069Gate() {
-    return nullptr;
+    return std::make_unique<nts::C4069>();
 }
 
 std::unique_ptr<nts::IComponent> nts::ComponentFactory::create4071Gate() {
