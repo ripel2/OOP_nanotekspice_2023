@@ -91,6 +91,21 @@ jobs:
         run: make tests_run
         timeout-minutes: 2
 
+  run_functionnal_tests:
+    name: Run the program functionnal tests (using the python script)
+    runs-on: ubuntu-latest
+    needs: [check_program_compilation]
+    container: epitechcontent/epitest-docker:latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Starts tests
+        run: python3 tests/functionnal/script.py
+        timeout-minutes: 2
+
   push_to_mirror:
     name: Pushes the current repository files to a given mirror repository
     runs-on: ubuntu-latest

@@ -114,3 +114,8 @@ if __name__ == "__main__":
 
     print(f"Success:\t{success}/{success + failed}")
     print(f"Failed:\t\t{failed}/{success + failed}")
+
+    if failed > 0:
+        # Exit with error code 1 if at least one test failed
+        sys.exit(1)
+    
