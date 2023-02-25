@@ -1,0 +1,5 @@
+NAME=empty chipsets
+DESCRIPTION=test for a file with a .chipsets label but no chipset
+CHECK_FOR=return_code
+FILE=empty_chipsets.nts
+RETURN_CODE=84

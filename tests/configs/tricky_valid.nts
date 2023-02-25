@@ -1,0 +1,29 @@
+  # cest quoi ketchak ?
+
+.chipsets:
+input    in_a
+   input in_b   
+           
+input    in_c  # commentaire
+  output out
+not     not1
+    not     not2  # autre # commentaire
+
+not    not3
+not not4
+or   or
+ and  and
+ 
+# l'imposteur est parmi nous
+    
+.links:
+in_a:1 not1:1
+ not1:2 not2:1  # encore 
+not2  :2    or:  1
+in_b:1  not3:1
+not3: 2 or: 2          
+ 
+or :3 not4 :1  # autauwu
+  not4: 2 and:  1
+in_c:1  and:2          # ban
+  out   : 1                    and   :  3

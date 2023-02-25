@@ -1,0 +1,5 @@
+NAME=missing link 3
+DESCRIPTION=test for a file with a link to no pin
+CHECK_FOR=return_code
+FILE=missing_link3.nts
+RETURN_CODE=84

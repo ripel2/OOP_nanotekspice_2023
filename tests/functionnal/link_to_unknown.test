@@ -1,0 +1,5 @@
+NAME=link to unknown
+DESCRIPTION=test for a file with a link to a component that does not exist
+CHECK_FOR=return_code
+FILE=link_to_unknown.nts
+RETURN_CODE=84

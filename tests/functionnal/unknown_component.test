@@ -1,0 +1,5 @@
+NAME=unknown component
+DESCRIPTION=test for a file with an unknown component
+CHECK_FOR=return_code
+FILE=unknown_component.nts
+RETURN_CODE=84

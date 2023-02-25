@@ -1,0 +1,8 @@
+NAME=tricky valid
+DESCRIPTION=test for a valid file with multiple comments and whitespaces
+CHECK_FOR=return_code
+FILE=tricky_valid.nts
+STDIN=EOF
+display
+EOF
+RETURN_CODE=0

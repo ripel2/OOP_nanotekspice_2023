@@ -1,0 +1,5 @@
+NAME=missing name
+DESCRIPTION=test for a file with a component that has no name
+CHECK_FOR=return_code
+FILE=missing_name.nts
+RETURN_CODE=84
