@@ -1,0 +1,13 @@
+NAME=true
+DESCRIPTION=tests for the True component
+FILE=true.nts
+CHECK_FOR=output
+STDIN=EOF
+display
+EOF
+STDOUT=EOF
+tick: 0
+input(s):
+output(s):
+  out: 1
+EOF

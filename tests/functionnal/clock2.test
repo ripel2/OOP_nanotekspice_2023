@@ -1,0 +1,48 @@
+NAME=clock2
+DESCRIPTION=tests for the Clock component starting from tick 2 and input 1
+FILE=clock.nts
+CHECK_FOR=output
+STDIN=EOF
+display
+simulate
+display
+cl=1
+display
+simulate
+display
+display
+simulate
+display
+EOF
+STDOUT=EOF
+tick: 0
+input(s):
+  cl: U
+output(s):
+  out: U
+tick: 1
+input(s):
+  cl: U
+output(s):
+  out: U
+tick: 1
+input(s):
+  cl: U
+output(s):
+  out: U
+tick: 2
+input(s):
+  cl: 1
+output(s):
+  out: 1
+tick: 2
+input(s):
+  cl: 1
+output(s):
+  out: 1
+tick: 3
+input(s):
+  cl: 0
+output(s):
+  out: 0
+EOF

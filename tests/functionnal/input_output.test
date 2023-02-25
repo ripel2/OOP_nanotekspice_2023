@@ -1,0 +1,44 @@
+NAME=input_output
+DESCRIPTION=basic tests for input and output components
+FILE=input_output.nts
+CHECK_FOR=output
+STDIN=EOF
+display
+in=1
+display
+simulate
+display
+in=0
+simulate
+display
+in=U
+simulate
+display
+EOF
+STDOUT=EOF
+tick: 0
+input(s):
+  in: U
+output(s):
+  out: U
+tick: 0
+input(s):
+  in: U
+output(s):
+  out: U
+tick: 1
+input(s):
+  in: 1
+output(s):
+  out: 1
+tick: 2
+input(s):
+  in: 0
+output(s):
+  out: 0
+tick: 3
+input(s):
+  in: U
+output(s):
+  out: U
+EOF

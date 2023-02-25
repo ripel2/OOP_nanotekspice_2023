@@ -1,0 +1,5 @@
+NAME=empty file
+DESCRIPTION=test for an empty file
+CHECK_FOR=return_code
+FILE=empty_file.nts
+RETURN_CODE=84

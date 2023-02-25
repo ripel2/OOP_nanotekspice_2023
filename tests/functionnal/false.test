@@ -1,0 +1,13 @@
+NAME=false
+DESCRIPTION=tests for the False component
+FILE=false.nts
+CHECK_FOR=output
+STDIN=EOF
+display
+EOF
+STDOUT=EOF
+tick: 0
+input(s):
+output(s):
+  out: 0
+EOF
