@@ -22,6 +22,7 @@
 #include "C4001.hpp"
 #include "C4011.hpp"
 #include "C4030.hpp"
+#include "C4071.hpp"
 
 #include <vector>
 
@@ -109,7 +110,7 @@ std::unique_ptr<nts::IComponent> nts::ComponentFactory::create4069Gate() {
 }
 
 std::unique_ptr<nts::IComponent> nts::ComponentFactory::create4071Gate() {
-    return nullptr;
+    return std::make_unique<nts::C4071>();
 }
 
 std::unique_ptr<nts::IComponent> nts::ComponentFactory::create4081Gate() {
