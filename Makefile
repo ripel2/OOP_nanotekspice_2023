@@ -12,29 +12,29 @@ NAME		=	nanotekspice
 
 MAIN		=	src/Main.cpp
 
-SRC			=	src/AComponent.cpp	\
-				src/APin.cpp	\
-				src/DummyPin.cpp	\
-				src/AndComponent.cpp	\
-				src/OrComponent.cpp	\
-				src/XorComponent.cpp	\
-				src/NotComponent.cpp	\
-				src/FalseComponent.cpp	\
-				src/TrueComponent.cpp	\
-				src/Tristate.cpp	\
-				src/Circuit.cpp	\
-				src/Parser.cpp	\
-				src/ComponentFactory.cpp \
-				src/CommandLine.cpp	\
-				src/OutputComponent.cpp	\
-				src/InputComponent.cpp	\
-				src/ClockComponent.cpp	\
-				src/C4069.cpp   \
-				src/C4001.cpp   \
-				src/C4011.cpp   \
-				src/C4030.cpp   \
-				src/C4071.cpp   \
-				src/C4081.cpp   \
+SRC			=	src/Components/AComponent.cpp	\
+				src/Components/ComponentFactory.cpp \
+				src/Components/Pins/APin.cpp	\
+				src/Components/Pins/DummyPin.cpp	\
+				src/Components/Gates/AndComponent.cpp	\
+				src/Components/Gates/NotComponent.cpp	\
+				src/Components/Gates/OrComponent.cpp	\
+				src/Components/Gates/XorComponent.cpp	\
+				src/Components/Static/FalseComponent.cpp	\
+				src/Components/Static/TrueComponent.cpp	\
+				src/Components/IO/ClockComponent.cpp	\
+				src/Components/IO/InputComponent.cpp	\
+				src/Components/IO/OutputComponent.cpp	\
+				src/Components/Advanced/C4001.cpp   \
+				src/Components/Advanced/C4011.cpp   \
+				src/Components/Advanced/C4030.cpp   \
+				src/Components/Advanced/C4069.cpp   \
+				src/Components/Advanced/C4071.cpp   \
+				src/Components/Advanced/C4081.cpp   \
+				src/Parsing/CommandLine.cpp	\
+				src/Parsing/Parser.cpp	\
+				src/Utils/Tristate.cpp	\
+				src/Components/Circuit.cpp
 
 OBJ			=	$(SRC:%.cpp=%.o) $(MAIN:%.cpp=%.o)
 
@@ -42,7 +42,16 @@ TESTS_SRC	=	$(wildcard tests/*.cpp)
 
 TESTS_OBJ	=	$(TESTS_SRC:%.cpp=%.o)
 
-CXXFLAGS	=	-Wall -Wextra -Wshadow -Wpedantic -Iinclude
+CXXFLAGS	=	$(INCLUDES) -Wall -Wextra -Wshadow -Wpedantic -Iinclude
+CXXFLAGS	+=	-I ./src	\
+				-I ./src/Parsing	\
+				-I ./src/Utils	\
+				-I ./src/Components	\
+				-I ./src/Components/Advanced	\
+				-I ./src/Components/Gates	\
+				-I ./src/Components/IO	\
+				-I ./src/Components/Pins	\
+				-I ./src/Components/Static
 
 TESTS_FLAGS	=	-lcriterion
 COVERAGE	=	--coverage -fprofile-arcs -ftest-coverage
