@@ -7,6 +7,11 @@
 
 #include "C4069.hpp"
 
+/**
+ * @brief Computes the value of the C4069 gate
+ * @param pin The pin to compute
+ * @returns The value of the pin
+ */
 nts::Tristate nts::C4069::compute(std::size_t pin)
 {
     if (pin == 2)
@@ -23,4 +28,3 @@ nts::Tristate nts::C4069::compute(std::size_t pin)
         return !getLink(13)->compute();
     return nts::UNDEFINED;
 }
-

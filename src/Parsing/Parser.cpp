@@ -7,15 +7,26 @@
 
 #include "Parser.hpp"
 
+/**
+ * @brief Parser class constructor
+*/
 nts::Parser::Parser(Circuit &circuit, ComponentFactory &factory, const std::string &filename)
     : _circuit(circuit), _factory(factory), _filename(filename)
 {
 }
 
+/**
+ * @brief Parser class destructor
+*/
 nts::Parser::~Parser()
 {
 }
 
+/**
+ * @brief Strips the comments out of a line
+ * @param line The line to strip
+ * @note A comment is a character '#' followed by any character
+*/
 void nts::Parser::stripComments(std::string &line)
 {
     size_t pos = line.find('#');
@@ -24,12 +35,21 @@ void nts::Parser::stripComments(std::string &line)
         line.erase(pos);
 }
 
+/**
+ * @brief Strips the line of all the characters in seps
+ * @param line The line to strip
+ * @param seps The characters to strip
+*/
 void nts::Parser::stripLine(std::string &line, const std::string &seps)
 {
     line.erase(line.find_last_not_of(seps) + 1);
     line.erase(0, line.find_first_not_of(seps));
 }
 
+/**
+ * @brief Parses a line of the config file and calls the appropriate functions
+ * @param line The line to parse
+*/
 void nts::Parser::parseLine(const std::string &line)
 {
     std::string seps = " \t\n";
@@ -56,6 +76,12 @@ void nts::Parser::parseLine(const std::string &line)
     }
 }
 
+/**
+ * @brief Parses a chipset
+ * @param line The line to parse
+ * @note The line must be in the form "chipset:name"
+ * else, a SyntaxError exception will be thrown
+*/
 void nts::Parser::parseChipset(const std::string &line)
 {
     std::smatch chipsetMatch;
@@ -72,6 +98,12 @@ void nts::Parser::parseChipset(const std::string &line)
     }
 }
 
+/**
+ * @brief Parses a link between two components
+ * @param line The line to parse
+ * @note The line must be in the form "link:pin otherLink:otherPin"
+ * else, a SyntaxError exception will be thrown
+*/
 void nts::Parser::parseLink(const std::string &line)
 {
     std::smatch linkMatch;
@@ -94,6 +126,9 @@ void nts::Parser::parseLink(const std::string &line)
     }
 }
 
+/**
+ * @brief Starts the parsing of the circuit file
+*/
 void nts::Parser::parseCircuit()
 {
     std::string line;

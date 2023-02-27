@@ -9,36 +9,68 @@
 
 #include "InputComponent.hpp"
 
-nts::CommandLine::CommandLine(Circuit &circuit) : _circuit(circuit)
+/**
+ * @brief Constructor of the CommandLine class
+ * @param circuit The circuit to use
+*/
+nts::CommandLine::CommandLine(Circuit &circuit)
+    : _circuit(circuit)
 {
 
 }
 
+/**
+ * @brief Destructor of the CommandLine class
+*/
 nts::CommandLine::~CommandLine()
 {
 
 }
 
+/**
+ * @brief Checks if a line is the exit command
+ * @param line The line to check
+ * @returns True if the line is the exit command, false otherwise
+*/
 bool nts::CommandLine::isExit(const std::string &line)
 {
     return line == "exit";
 }
 
+/**
+ * @brief Checks if a line is the display command
+ * @param line The line to check
+ * @returns True if the line is the display command, false otherwise
+*/
 bool nts::CommandLine::isDisplay(const std::string &line)
 {
     return line == "display";
 }
 
+/**
+ * @brief Checks if a line is the simulate command
+ * @param line The line to check
+ * @returns True if the line is the simulate command, false otherwise
+*/
 bool nts::CommandLine::isSimulate(const std::string &line)
 {
     return line == "simulate";
 }
 
+/**
+ * @brief Checks if a line is the loop command
+ * @param line The line to check
+ * @returns True if the line is the loop command, false otherwise
+*/
 bool nts::CommandLine::isLoop(const std::string &line)
 {
     return line == "loop";
 }
 
+/**
+ * @brief Checks if a line is a possible input and processes it if it is
+ * @param line The line to process
+*/
 void nts::CommandLine::processPossibleInput(const std::string &line)
 {
     std::string name;
@@ -56,6 +88,10 @@ void nts::CommandLine::processPossibleInput(const std::string &line)
         _circuit.setInput(name, nts::Tristate::UNDEFINED);
 }
 
+/**
+ * @brief Processes a line of the command line
+ * @param line The line to process
+*/
 void nts::CommandLine::processLine(const std::string &line)
 {
     if (isDisplay(line))
@@ -67,6 +103,9 @@ void nts::CommandLine::processLine(const std::string &line)
     processPossibleInput(line);
 }
 
+/**
+ * @brief Starts the command line loop
+*/
 void nts::CommandLine::loop()
 {
     std::string line;

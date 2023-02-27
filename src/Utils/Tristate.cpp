@@ -7,6 +7,12 @@
 
 #include "Tristate.hpp"
 
+/**
+ * @brief And operator for two Tristates
+ * @param a First Tristate
+ * @param b Second Tristate
+ * @returns the result of the and operation between the two Tristates
+*/
 nts::Tristate nts::operator&(nts::Tristate a, nts::Tristate b)
 {
     if (a == FALSE && b == 0)
@@ -28,6 +34,12 @@ nts::Tristate nts::operator&(nts::Tristate a, nts::Tristate b)
     return UNDEFINED;
 }
 
+/**
+ * @brief Or operator for two Tristates
+ * @param a First Tristate
+ * @param b Second Tristate
+ * @returns the result of the or operation between the two Tristates
+*/
 nts::Tristate nts::operator|(nts::Tristate a, nts::Tristate b)
 {
     if (a == FALSE && b == FALSE)
@@ -49,6 +61,11 @@ nts::Tristate nts::operator|(nts::Tristate a, nts::Tristate b)
     return UNDEFINED;
 }
 
+/**
+ * @brief Not operator for a Tristate
+ * @param a Tristate
+ * @returns the result of the not operation on the Tristate
+*/
 nts::Tristate nts::operator!(nts::Tristate a)
 {
     if (a == UNDEFINED)
@@ -58,6 +75,12 @@ nts::Tristate nts::operator!(nts::Tristate a)
     return TRUE;
 }
 
+/**
+ * @brief Xor operator for two Tristates
+ * @param a First Tristate
+ * @param b Second Tristate
+ * @returns the result of the xor operation between the two Tristates
+*/
 nts::Tristate nts::operator^(nts::Tristate a, nts::Tristate b)
 {
     if (a == UNDEFINED ||
@@ -72,6 +95,12 @@ nts::Tristate nts::operator^(nts::Tristate a, nts::Tristate b)
     return TRUE;
 }
 
+/**
+ * @brief Output operator for a Tristate
+ * @param s The output stream
+ * @param a The Tristate to print
+ * @returns the updated output stream
+*/
 std::ostream &nts::operator<<(std::ostream &s, nts::Tristate a)
 {
     if (a == UNDEFINED)

@@ -27,6 +27,11 @@
 
 #include <vector>
 
+/**
+ * @brief Create a component using the factory
+ * @param type The type of component to create
+ * @returns The created component
+*/
 std::unique_ptr<nts::IComponent> nts::ComponentFactory::createComponent(const std::string &type) {
     std::string components[] = {
         "input", "output", "clock", "true", "false",

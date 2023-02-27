@@ -7,6 +7,13 @@
 
 #include "XorComponent.hpp"
 
+/**
+ * @brief Computes the value of the Xor gate
+ * @param pin The pin to compute
+ * @returns The value of the pin
+ * @note The pin must be 3, as the XorComponent only has 3 pins and
+ * the third pin is the output
+*/
 nts::Tristate nts::XorComponent::compute(std::size_t pin)
 {
     if (pin != 3)

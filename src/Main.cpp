@@ -10,6 +10,12 @@
 #include "Parser.hpp"
 #include "CommandLine.hpp"
 
+/**
+ * @brief Main function
+ * @param ac The number of arguments
+ * @param av The arguments
+ * @returns 0 if the program ran successfully, 84 otherwise
+*/
 int main(int ac, char **av)
 {
     if (ac != 2) {

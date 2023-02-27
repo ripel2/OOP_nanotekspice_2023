@@ -11,20 +11,36 @@
 #include "OutputComponent.hpp"
 #include "ClockComponent.hpp"
 
+/**
+ * @brief Constructor of the Circuit class
+*/
 nts::Circuit::Circuit()
     : _tick(0), _components() 
 {
 }
 
+/**
+ * @brief Destructor of the Circuit class
+*/
 nts::Circuit::~Circuit()
 {
 }
 
+/**
+ * @brief Adds a component to the circuit
+ * @param name The name of the component
+ * @param component The component
+*/
 void nts::Circuit::addComponent(const std::string &name, std::unique_ptr<IComponent> component)
 {
     _components[name] = std::move(component);
 }
 
+/**
+ * @brief Gets a component from the circuit given its name
+ * @param name The name of the component
+ * @returns The component
+*/
 std::shared_ptr<nts::IComponent> nts::Circuit::getComponent(const std::string &name) const
 {
     if (_components.find(name) == _components.end())
@@ -32,6 +48,14 @@ std::shared_ptr<nts::IComponent> nts::Circuit::getComponent(const std::string &n
     return _components.at(name);
 }
 
+/**
+ * @brief Sets a link between a pin of the current component and a pin of another component
+ * @param pin The pin of the current component
+ * @param other The other component
+ * @param otherPin The pin of the other component
+ * @note This function is not implemented in the circuit class, as
+ * the circuit class is only a container for components
+*/
 void nts::Circuit::setLink(std::size_t pin, nts::IComponent &other, std::size_t otherPin)
 {
     (void)pin;
@@ -39,12 +63,22 @@ void nts::Circuit::setLink(std::size_t pin, nts::IComponent &other, std::size_t 
     (void)otherPin;
 }
 
+/**
+ * @brief Computes the value of a pin in the circuit
+ * @param pin The pin number
+ * @returns The value of the pin
+ * @note This function is not implemented in the circuit class, as
+ * the circuit class is only a container for components
+*/
 nts::Tristate nts::Circuit::compute(std::size_t pin)
 {
     (void)pin;
     return nts::UNDEFINED;
 }
 
+/**
+ * @brief Displays the circuit inputs and outputs
+*/
 void nts::Circuit::display() const
 {
     std::shared_ptr<nts::IComponent> componentPtr;
@@ -66,11 +100,19 @@ void nts::Circuit::display() const
     }
 }
 
+/**
+ * @brief Gets the current tick of the circuit
+ * @returns The current tick of the circuit
+*/
 std::size_t nts::Circuit::getTick() const
 {
     return _tick;
 }
 
+/**
+ * @brief Simulates the circuit for a given tick
+ * @param tick The tick to simulate
+*/
 void nts::Circuit::simulate(std::size_t tick)
 {
     for (auto &component : _components) {
@@ -79,6 +121,9 @@ void nts::Circuit::simulate(std::size_t tick)
     _tick++;
 }
 
+/**
+ * @brief Simulates the circuit until the program is stopped
+*/
 void nts::Circuit::loop()
 {
     while (true) {
@@ -87,6 +132,11 @@ void nts::Circuit::loop()
     }
 }
 
+/**
+ * @brief Sets the state of a component in the circuit
+ * @param name The name of the component
+ * @param state The state to set
+*/
 void nts::Circuit::setInput(const std::string &name, nts::Tristate state)
 {
     std::shared_ptr<nts::IComponent> componentPtr = getComponent(name);
@@ -99,6 +149,10 @@ void nts::Circuit::setInput(const std::string &name, nts::Tristate state)
     }
 }
 
+/**
+ * @brief Checks if the circuit is empty
+ * @returns True if the circuit is empty, false otherwise
+*/
 bool nts::Circuit::isEmpty() const
 {
     return _components.empty();

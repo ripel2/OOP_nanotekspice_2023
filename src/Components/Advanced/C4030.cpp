@@ -7,6 +7,11 @@
 
 #include "C4030.hpp"
 
+/**
+ * @brief Computes the value of the C4030 gate
+ * @param pin The pin to compute
+ * @returns The value of the pin
+ */
 nts::Tristate nts::C4030::compute(std::size_t pin)
 {
     if (pin == 3)

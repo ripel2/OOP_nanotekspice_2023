@@ -7,6 +7,11 @@
 
 #include "C4011.hpp"
 
+/**
+ * @brief Computes the value of the C4011 gate
+ * @param pin The pin to compute
+ * @returns The value of the pin
+ */
 nts::Tristate nts::C4011::compute(std::size_t pin)
 {
     if (pin == 3)
