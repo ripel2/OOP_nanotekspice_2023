@@ -14,6 +14,7 @@ MAIN		=	src/Main.cpp
 
 SRC			=	src/AComponent.cpp	\
 				src/APin.cpp	\
+				src/DummyPin.cpp	\
 				src/AndComponent.cpp	\
 				src/OrComponent.cpp	\
 				src/XorComponent.cpp	\

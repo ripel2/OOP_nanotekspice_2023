@@ -10,6 +10,7 @@
 #include "Tristate.hpp"
 #include "IComponent.hpp"
 #include "IPin.hpp"
+#include "DummyPin.hpp"
 
 #include <map>
 #include <memory>
@@ -25,7 +26,6 @@ namespace nts {
             std::shared_ptr<IPin> getLink(std::size_t pin) const;
         protected:
         private:
-            std::map<std::size_t, std::shared_ptr<IPin>> _inputs;
-            std::map<std::size_t, std::shared_ptr<IPin>> _outputs;
-    };
+            std::map<std::size_t, std::shared_ptr<IPin>> _pins;
+    }; 
 }
