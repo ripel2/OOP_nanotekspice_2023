@@ -40,8 +40,7 @@ nts::Tristate nts::C4008::compute(std::size_t pin)
         nts::Tristate a = sumTristate(getLink(6)->compute(), getLink(7)->compute());
         nts::Tristate b = sumTristate(a, sumTristate(getLink(4)->compute(), getLink(5)->compute()));
         nts::Tristate c = sumTristate(b, sumTristate(getLink(2)->compute(), getLink(3)->compute()));
-        nts::Tristate d = sumTristate(c, sumTristate(getLink(1)->compute(), getLink(15)->compute()));
-        return sumTristate(d, sumTristate(getLink(8)->compute(), getLink(9)->compute()));
+        return sumTristate(c, sumTristate(getLink(1)->compute(), getLink(15)->compute()));
     }
     return nts::UNDEFINED;
 }
