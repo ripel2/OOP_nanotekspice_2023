@@ -33,6 +33,7 @@ SRC			=	src/Components/AComponent.cpp	\
 				src/Components/Advanced/C4071.cpp   \
 				src/Components/Advanced/C4081.cpp   \
 				src/Components/Advanced/C4512.cpp   \
+				src/Components/Advanced/C4008.cpp   \
 				src/Parsing/CommandLine.cpp	\
 				src/Parsing/Parser.cpp	\
 				src/Utils/Tristate.cpp	\
