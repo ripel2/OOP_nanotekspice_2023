@@ -128,6 +128,7 @@ void nts::Circuit::loop()
 {
     while (true) {
         simulate(_tick);
+        display();
         _tick++;
     }
 }
