@@ -28,6 +28,7 @@ SRC			=	src/Components/AComponent.cpp	\
 				src/Components/Advanced/C4001.cpp   \
 				src/Components/Advanced/C4011.cpp   \
 				src/Components/Advanced/C4030.cpp   \
+				src/Components/Advanced/C4040.cpp   \
 				src/Components/Advanced/C4069.cpp   \
 				src/Components/Advanced/C4071.cpp   \
 				src/Components/Advanced/C4081.cpp   \
