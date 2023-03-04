@@ -11,11 +11,15 @@
 #include "OutputComponent.hpp"
 #include "ClockComponent.hpp"
 
+namespace nts {
+    std::atomic<bool> stopLoop(false);
+}
+
 /**
  * @brief Constructor of the Circuit class
 */
 nts::Circuit::Circuit()
-    : _tick(0), _components() 
+    : _tick(0), _components()
 {
 }
 
@@ -126,11 +130,14 @@ void nts::Circuit::simulate(std::size_t tick)
 */
 void nts::Circuit::loop()
 {
-    while (true) {
+    stopLoop = false;
+    signal(SIGINT, [](int) { stopLoop = true; });
+    while (stopLoop == false) {
         simulate(_tick);
         display();
         _tick++;
     }
+    signal(SIGINT, SIG_DFL);
 }
 
 /**

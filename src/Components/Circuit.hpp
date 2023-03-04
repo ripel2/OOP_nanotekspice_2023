@@ -9,6 +9,9 @@
 
 #include "IComponent.hpp"
 #include <map>
+#include <memory>
+#include <csignal>
+#include <atomic>
 
 namespace nts {
     class Circuit : IComponent {
