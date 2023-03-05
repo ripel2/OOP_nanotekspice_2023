@@ -119,6 +119,8 @@ void nts::Parser::parseLink(const std::string &line)
             throw NoChipset("No chipset \"" + link + "\" at line " + std::to_string(_lineNumber));
         if (otherComponent == nullptr)
             throw NoChipset("No chipset \"" + otherLink + "\" at line " + std::to_string(_lineNumber));
+        if (link == otherLink)
+            throw SyntaxError("Loop detected at line " + std::to_string(_lineNumber));
         component->setLink(pin, *otherComponent, otherPin);
         otherComponent->setLink(otherPin, *component, pin);
     } else {
